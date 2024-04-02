@@ -47,6 +47,13 @@ const storage = multer.diskStorage({
 })
 
 const upload = multer({storage})
+app.get('/', (req, res) => {
+    return res
+        .status(400)
+        .json({
+            message: 'rwerwerwerwerwer'
+        })
+})
 
 app.post('/auth/register', registerValidation, handleValidationErrors, register)
 app.post('/auth/login', loginValidation, handleValidationErrors, login)
