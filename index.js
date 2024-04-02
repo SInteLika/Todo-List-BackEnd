@@ -10,7 +10,6 @@ import {
     login,
     register
 } from "./controllers/UserController.js";
-import {password as pass} from "./pass.js";
 import handleValidationErrors from "./Utils/handleValidationErrors.js";
 import {loginValidation, registerValidation} from "./validations/auth.js";
 import checkAuth from "./Utils/checkAuth.js";
@@ -24,6 +23,8 @@ import {getAllTask, taskCreate, taskDeleted, taskFulfilled, updateTask} from "./
 import {checkStatistics} from "./controllers/StatisticsController.js";
 import multer from "multer";
 
+const pass = process.env.PASSWORD
+export const secretTokenKey = process.env.TOKEN
 
 mongoose.connect(`mongodb+srv://Sintel:${pass}@cluster0.skbrnni.mongodb.net/todo?retryWrites=true&w=majority`)
     .then(() => console.log('Connect to MongoDB'))

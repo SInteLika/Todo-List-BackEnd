@@ -1,5 +1,6 @@
 import jwt from "jsonwebtoken"
-import {secretTokenKey} from "../pass.js";
+import {secretTokenKey} from "../index.js";
+
 
 export default function checkAuth(req, res, next) {
     const token = (req.headers.authorization || '').replace(/Bearer\s?/, '');

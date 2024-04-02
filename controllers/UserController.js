@@ -1,7 +1,7 @@
 import UserModel from "../models/User.js";
 import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
-import {secretTokenKey} from "../pass.js";
+import {secretTokenKey} from "../index.js";
 import {createStatistics} from "./StatisticsController.js";
 import TaskActiveModule from "../models/TaskActive.js";
 
