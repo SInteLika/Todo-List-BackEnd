@@ -23,7 +23,7 @@ import {getAllTask, taskCreate, taskDeleted, taskFulfilled, updateTask} from "./
 import {checkStatistics} from "./controllers/StatisticsController.js";
 import multer from "multer";
 
-const pass = process.env.PASSWORD
+const pass = encodeURIComponent(process.env.PASSWORD)
 export const secretTokenKey = process.env.TOKEN
 
 mongoose.connect(`mongodb+srv://Sintel:${pass}@cluster0.skbrnni.mongodb.net/todo?retryWrites=true&w=majority`)
