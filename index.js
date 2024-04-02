@@ -32,7 +32,7 @@ mongoose.connect(`mongodb+srv://Sintel:${pass}@cluster0.skbrnni.mongodb.net/todo
 
 // Вместо todo можно вставить любое имя, так будет назваться БД
 
-const app = express()
+export const app = express()
 app.use(express.json())
 app.use(cors())
 app.use('/uploads', express.static('uploads'))
