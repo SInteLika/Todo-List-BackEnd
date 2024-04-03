@@ -19,12 +19,21 @@ import {
     removeCategories,
     updateCategories
 } from "./controllers/CategoriesController.js";
-import {getAllTask, taskCreate, taskDeleted, taskFulfilled, updateTask} from "./controllers/TaskController.js";
+import {
+    getAllTask,
+    taskCreate,
+    taskDeleted,
+    taskFulfilled,
+    taskNotFulfilled,
+    updateTask
+} from "./controllers/TaskController.js";
 import {checkStatistics} from "./controllers/StatisticsController.js";
 import multer from "multer";
 
 const pass = encodeURIComponent(process.env.PASSWORD)
 export const secretTokenKey = process.env.TOKEN
+
+
 
 mongoose.connect(`mongodb+srv://Sintel:${pass}@cluster0.skbrnni.mongodb.net/todo?retryWrites=true&w=majority`)
     .then(() => console.log('Connect to MongoDB'))
@@ -68,7 +77,7 @@ app.patch('/user/theme', checkAuth, changeTheme)
 app.get('/categories', checkAuth, getCategories)
 app.post('/categories', checkAuth, createCategories)
 app.patch('/categories', checkAuth, updateCategories)
-app.delete('/categories', checkAuth, removeCategories)
+app.delete('/categories/:id', checkAuth, removeCategories)
 
 
 app.get('/categories/task/:id', checkAuth, getAllTask)
@@ -90,7 +99,7 @@ app.post('/upload', upload.single('image'), (req, res) => {
 })
 
 
-app.listen(3000, (err) => {
+app.listen(4444, (err) => {
     if (err) {
         return console.log(err)
     } else console.log('Server ok')

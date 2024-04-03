@@ -68,7 +68,7 @@ export async function updateCategories(req, res) {
 export async function removeCategories(req, res) {
     try {
         const doc = await CategoriesModel.findOne({
-            _id: req.body.id,
+            _id: req.params.id.toString(),
             user: req.userId
         })
         if (!doc) {
@@ -80,7 +80,7 @@ export async function removeCategories(req, res) {
         }
 
         const taskActive = await TaskActiveModel.deleteMany({
-            categories: req.body.id
+            categories: req.params.id.toString()
         })
             .catch((err) => {
                 console.log(err)
@@ -90,7 +90,7 @@ export async function removeCategories(req, res) {
             })
 
         const taskFulfilled = await TaskFulfilledModel.deleteMany({
-            categories: req.body.id
+            categories: req.params.id.toString()
         })
             .catch((err) => {
                 console.log(err)
@@ -99,11 +99,8 @@ export async function removeCategories(req, res) {
                 })
             })
 
-        const statistics = await taskWeekDeletedUpdate(req.body.weekData, req.userId, taskActive.deletedCount + taskFulfilled.deletedCount)
-
-
         const category = await CategoriesModel.findByIdAndDelete({
-            _id: req.body.id
+            _id: req.params.id.toString()
         })
             .catch((err) => {
                 console.log(err)
@@ -111,12 +108,10 @@ export async function removeCategories(req, res) {
                     message: 'Не удалось удалить категорию'
                 })
             })
-
-
         res
             .status(200)
             .json({
-                statistics
+                status: 'Успешно'
             })
 
     } catch (err) {
