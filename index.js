@@ -24,7 +24,6 @@ import {
     taskCreate,
     taskDeleted,
     taskFulfilled,
-    taskNotFulfilled,
     updateTask
 } from "./controllers/TaskController.js";
 import {checkStatistics} from "./controllers/StatisticsController.js";

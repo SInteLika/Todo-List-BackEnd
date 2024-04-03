@@ -3,7 +3,6 @@ import bcrypt from "bcrypt";
 import jwt from "jsonwebtoken";
 import {secretTokenKey} from "../index.js";
 import {createStatistics} from "./StatisticsController.js";
-import TaskActiveModule from "../models/TaskActive.js";
 
 export async function register(req, res) {
     try {

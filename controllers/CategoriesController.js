@@ -1,7 +1,6 @@
 import CategoriesModel from '../models/Categories.js'
 import TaskActiveModel from '../models/TaskActive.js'
 import TaskFulfilledModel from '../models/TaskFulfilled.js'
-import {taskWeekDeletedUpdate} from "./StatisticsController.js";
 
 export async function getCategories(req, res) {
     try {
